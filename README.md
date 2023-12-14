@@ -364,7 +364,7 @@ organize_cancer_images(metadata_path, base_directory, diagnosis_to_organize, ima
 
 ## Augmenting and Visualizing Images
 
-### 10 Augmenting and Visualizing a Single Image
+### 10. Augmenting and Visualizing a Single Image
 
 ```python
 # Function to augment and visualize a single image
@@ -423,7 +423,7 @@ image_path = os.path.join(image_dir, image_file)
 augment_and_visualize_single_image(image_path)
 ```
 
-### 11 Augmenting All Images in Cancer Directory
+### 11. Augmenting All Images in Cancer Directory
 
 ```python
 # Function to augment images in a directory
@@ -491,7 +491,7 @@ augmented_image_directory = "/content/gdrive/MyDrive/Images/Aug_Cancer"
 augment_images(original_image_directory, augmented_image_directory, target_size=(600, 450), num_augmented_images=4)
 ```
 
-### 12 Counting the Number of Files in Cancer Directory
+### 12. Counting the Number of Files in Cancer Directory
 
 ```python
 # Function to count files in a Cancer directory
@@ -519,7 +519,7 @@ num_files_part_1 = count_files_in_directory(directory_path_part_1)
 # Print the results
 print(f'Number of files in Cancer: {num_files_part_1}')
 ```
-### 13 Counting the Number of Files in Aug_Cancer Directory
+### 13. Counting the Number of Files in Aug_Cancer Directory
 
 ```python
 # Function to count files in a Aug_Cancer directory
@@ -548,7 +548,7 @@ num_files_part_1 = count_files_in_directory(directory_path_part_1)
 print(f'Number of files in Aug_Cancer: {num_files_part_1}')
 ```
 
-### 14 Counting the Number of Files in Normal Directory
+### 14. Counting the Number of Files in Normal Directory
 
 ```python
 # Function to count files in a Normal directory
@@ -579,7 +579,7 @@ print(f'Number of files in Normal: {num_files_part_1}')
 
 ## Combined Metadata
 
-### 15 Combining Metadata (Normal + Cancer + Aug_Cancer)
+### 15. Combining Metadata (Normal + Cancer + Aug_Cancer)
 
 ```python
 # Function to create augmented metadata
@@ -630,7 +630,7 @@ output_metadata_path = "/content/gdrive/MyDrive/Images/Aug_HAM10000_metadata.csv
 create_augmented_metadata(original_metadata_path, augmented_image_directory, output_metadata_path)
 ```
 
-### 16 Reading Combined Metadata
+### 16. Reading Combined Metadata
 ```
 df = pd.read_csv('/content/gdrive/MyDrive/Images/Aug_HAM10000_metadata.csv')
 df
@@ -647,7 +647,7 @@ df['diagnosis'].value_counts()
 
 ## Feature Extraction
 
-### 17 Extracting Features (8x8 Grayscale)
+### 17. Extracting Features (8x8 Grayscale)
 
 ```python
 # Function to extract features and save to CSV
@@ -726,7 +726,7 @@ features_csv_path = '/content/gdrive/MyDrive/Images/Aug_HAM_8_8_custom_features_
 extract_features_and_save(image_dir_normal, image_dir_cancer, image_dir_aug_cancer, custom_metadata_path, features_csv_path)
 ```
 
-### 18 Loading Features.csv
+### 18. Loading Features.csv
 
 ```python
 # Loading features CSV file
@@ -735,7 +735,7 @@ features_df = pd.read_csv(features_path)
 features_df
 ```
 
-### 19 Merging Metadata with Features
+### 19. Merging Metadata with Features
 
 ```python
 # Merging metadata with features
@@ -752,7 +752,7 @@ merged_data['diagnosis'].value_counts()
 merged_data['diagnosis'] = merged_data['diagnosis'].astype(str)
 ```
 
-## 20 Label Encoding
+## 20. Label Encoding
 
 ```python
 # Label Encoding
@@ -762,7 +762,7 @@ merged_data['diagnosis_label'] = 1 - merged_data['diagnosis_label']
 merged_data[['diagnosis', 'diagnosis_label']]
 ```
 
-## 21 Train-Test Split
+## 21. Train-Test Split
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -777,7 +777,7 @@ y = shuffled_data['diagnosis_label']
 # Split the shuffled data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 ```
-## 22 Checking Normalization Status
+## 22. Checking Normalization Status
 ```
 # Check if any value is outside the [0, 1] range
 out_of_range_values = X[(X < 0) | (X > 1)].stack()
@@ -790,7 +790,7 @@ else:
     print("No values outside the [0, 1] range. Data is already normalized")
 ```
 
-## 23 Fitting Different ML Models
+## 23. Fitting Different ML Models
 
 ```python
 # Fitting different ML models
@@ -817,7 +817,7 @@ rf_predictions = rf_model.predict(X_test)
 
 ## Model Evaluation and Visualization
 
-### 24 Confusion Matrix Heatmap for Each Model
+### 24. Confusion Matrix Heatmap for Each Model
 
 ```python
 # Create a heatmap for each model
@@ -839,7 +839,7 @@ for model_name, predictions in models.items():
     plt.show()
 ```
 
-### 25 ROC Curve for Different Models
+### 25. ROC Curve for Different Models
 
 ```python
 # ROC Curve for different models
@@ -877,7 +877,7 @@ plt.legend(loc="lower right")
 plt.savefig('ROC Curve for Different Models.png')
 plt.show()
 ```
-### 26 ROC-AUC score
+### 26. ROC-AUC score
 ```
 from sklearn.metrics import roc_auc_score
 
@@ -886,7 +886,7 @@ for model_name, predictions in models.items():
     auc_score = roc_auc_score(y_test, predictions)
     print(f"The ROC AUC score for {model_name} is: {auc_score:.2f}")
 ```
-### 27 Precision-Recall Curve
+### 27. Precision-Recall Curve
 
 ```python
 # Precision-Recall curve
@@ -910,7 +910,7 @@ plt.savefig('Plot Precision-Recall Curve.png')
 plt.show()
 ```
 
-### 28 Precision, Recall, F1 Score
+### 28. Precision, Recall, F1 Score
 
 ```python
 # Precision, Recall, F1 Score
@@ -952,7 +952,7 @@ plt.savefig('precision_recall_fscore_support.png')
 plt.show()
 ```
 
-### 29 Model Comparison - Accuracy Scores
+### 29. Model Comparison - Accuracy Scores
 
 ```python
 # Calculate accuracy scores for each model
@@ -977,7 +977,7 @@ plt.title('Model Comparison - Accuracy Scores')
 plt.savefig('Model Comparison - Accuracy Scores.png')
 plt.show()
 ```
-### 30 Model's Accuracy in Plotly Library
+### 30. Model's Accuracy in Plotly Library
 ```
 import plotly.io as pio
 import plotly.express as px
@@ -1009,7 +1009,7 @@ fig.update_traces(texttemplate='%{text:.2f}', textposition='outside')
 # Show the plot
 fig.show()
 ```
-# 31 Results
+# 31. Results
 ## GAN for Class Imbalance: Results and Analysis
 
 In an attempt to address class imbalance, a Generative Adversarial Network (GAN) was applied to augment the dataset. The process involved generating 4 augmented images for every original cancer image. After applying GAN on 1727 images of cancer, a total of 8135 images was obtained (1727 original + 6508 augmented) for the cancer class.
@@ -1039,7 +1039,7 @@ The ROC AUC score is preferable as it provides a comprehensive measure of a mode
 - **Closer to 1.0**: Indicates better model performance.
 - **Around 0.5**: Suggests that the model's performance is not significantly better than random chance.
 
-# 32 Conclusion
+# 32. Conclusion
 
 The GAN-based augmentation strategy did not result in a substantial increase in accuracy. The ROC AUC scores provide insights into the relative performance of different models, with SVM and Random Forest exhibiting relatively better performance.
 ## ROC-Curve without GAN
