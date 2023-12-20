@@ -67,7 +67,36 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 ```
+# Kaggle Integration in Google Colab
 
+This guide provides step-by-step instructions on how to set up Kaggle integration in Google Colab. This integration allows you to effortlessly download Kaggle datasets and participate in Kaggle competitions directly from your Colab notebooks.
+
+## 1. Download `kaggle.json`:
+
+- Go to the Kaggle website: [https://www.kaggle.com/](https://www.kaggle.com/)
+- Log in or create a Kaggle account if you don't have one.
+- Navigate to your account settings page.
+- Scroll down to the "API" section.
+- Click on "Create New API Token" to download the `kaggle.json` file.
+
+## 2. Upload `kaggle.json` to Google Colab:
+
+- Open your Google Colab notebook.
+- Click on the "Files" tab in the left sidebar.
+- Click on the "Upload" button.
+- Select the `kaggle.json` file you downloaded and upload it to Colab.
+
+## 3. Install Kaggle API in Colab:
+
+Run the following commands in a Colab cell to install the Kaggle API and move the `kaggle.json` file to the appropriate directory:
+
+```python
+!pip install kaggle
+!mkdir -p ~/.kaggle
+!cp kaggle.json ~/.kaggle/
+!chmod 600 ~/.kaggle/kaggle.json
+
+```
 ## 3. Download Dataset
 
 ```python
