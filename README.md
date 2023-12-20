@@ -95,8 +95,18 @@ Run the following commands in a Colab cell to install the Kaggle API and move th
 !mkdir -p ~/.kaggle
 !cp kaggle.json ~/.kaggle/
 !chmod 600 ~/.kaggle/kaggle.json
-
 ```
+4. Use Kaggle API:
+Now, you can use the Kaggle API in your Colab notebook to download datasets or interact with Kaggle competitions. For example:
+```
+# List available datasets
+!kaggle datasets list
+
+# Download a dataset
+!kaggle datasets download -d dataset-name
+```
+Make sure to replace the dataset name with the actual name of the Kaggle dataset you want to download.
+
 ## 3. Download Dataset
 
 ```python
